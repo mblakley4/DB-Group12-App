@@ -8,7 +8,8 @@ public class exec {
     public static void main(String[] args) {
         try {
 // The newInstance() call is a work around for some
-// broken Java implementations Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor()
+// broken Java implementations
+            Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor()
                                                                 .newInstance();
             String dbName = "Your Database Name";
             String port = "Your Database Server Port";
@@ -25,7 +26,9 @@ public class exec {
             }
         } catch (SQLException ex) {
 // handle the error
-            System.out.println("SQLException: " + ex.getMessage()); System.out.println("SQLState: " + ex.getSQLState()); System.out.println("VendorError: " + ex.getErrorCode());
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
         }
         catch (Exception e)
         {

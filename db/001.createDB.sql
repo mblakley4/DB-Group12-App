@@ -1,0 +1,3 @@
+CREATE DATABASE IF NOT EXISTS group12db;
+
+USE group12db;
