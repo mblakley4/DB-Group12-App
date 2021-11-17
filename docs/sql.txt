@@ -19,8 +19,7 @@ WHERE B.SupplierID = Supp.SupplierID
         FROM book B2, supplier Supp2
         WHERE B2.SupplierID = Supp2.SupplierID
             AND B2.UnitPrice
-            AND Supp2.CompanyName = 'Supplier3'
-    );
+            AND Supp2.CompanyName = 'Supplier3');
 
 
 3.
@@ -171,7 +170,7 @@ WHERE O.OrderID = OD.OrderID
 15.
 -- Show the name of the customer who has ordered at least one book written by *author1*.
 
-SELECT C.FirstName, C.LastName
+SELECT DISTINCT C.FirstName, C.LastName
 FROM `order` O, order_detail OD, customer C, book B
 WHERE O.OrderID = OD.OrderID
     AND O.CustomerID = C.CustomerID

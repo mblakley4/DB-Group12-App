@@ -1,0 +1,34 @@
+12.
+-- Show the names of all the ordered books and their total quantities.
+List the result in ascending quantity.
+
+SELECT B.Title, OD.Quantity
+FROM book B, order_detail OD
+WHERE B.BookID = OD.BookID
+ORDER BY OD.Quantity ASC;
+
+
+2.
+-- Show the name and price of the most expensive book supplied by *supplier3*.
+
+SELECT B.Title, B.UnitPrice
+FROM book B, supplier Supp
+WHERE B.SupplierID = Supp.SupplierID
+    AND B.UnitPrice = (
+        SELECT MAX(B2.UnitPrice)
+        FROM book B2, supplier Supp2
+        WHERE B2.SupplierID = Supp2.SupplierID
+            AND B2.UnitPrice
+            AND Supp2.CompanyName = 'Supplier3');
+
+
+8.
+-- Show the total price each customer paid and their names.  List the result in descending price.
+
+SELECT C.FirstName, C.LastName, SUM(OD.Quantity*B.UnitPrice) AS PurchaseTotal
+FROM book B, order_detail OD, `order` O, customer C
+WHERE OD.BookID = B.BookID
+    AND O.OrderID = OD.OrderID
+    AND C.CustomerID = O.CustomerID
+GROUP BY C.CustomerID
+ORDER BY PurchaseTotal DESC;
