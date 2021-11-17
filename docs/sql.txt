@@ -98,7 +98,7 @@ FROM book B, shipper Shp, `order` O, order_detail OD
 WHERE B.BookID = OD.BookID
     AND OD.OrderID = O.OrderID
     AND O.ShipperID = Shp.ShipperID
-    AND O.ShippedDate = '2016-08-04';
+    AND O.ShippedDate = '8/4/2016';
 
 
 10.
@@ -197,7 +197,7 @@ SELECT B.Title, sum(OD.Quantity) as Total
 FROM book B, `order` O, order_detail OD
 WHERE B.BookID = OD.BookID
     AND O.OrderID = OD.OrderID
-    AND (O.ShippedDate is null OR O.ShippedDate > '2016-08-04')
+    AND (O.ShippedDate is null OR O.ShippedDate > '8/4/2016')
 GROUP BY B.Title;
 
 
